@@ -6,6 +6,7 @@ import kusitms.hdmedi.service.AnnouncementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,7 @@ public class AnnouncementController {
     private final AnnouncementService announcementService;
 
     @GetMapping("")
-    public Page<AnnouncementResponse> getAll(Pageable pageable) {
+    public Page<AnnouncementResponse> getAll(@PageableDefault(size = 5) Pageable pageable) {
         return announcementService.getAll(pageable);
     }
 
