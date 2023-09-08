@@ -10,15 +10,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AnnouncementService {
     private final AnnouncementRepository announcementRepository;
 
-    public Page<AnnouncementResponse> getAll(Pageable pageable) {
-        //domain객체들 response_dto객체들로 변환
-        return announcementRepository.findAll(pageable)
-                .map(AnnouncementResponse::new);
+    public List<AnnouncementResponse> getAll(Pageable pageable) {
+        List<AnnouncementResponse> announcementResponses = announcementRepository.findAll(pageable)
+                .map(AnnouncementResponse::new)
+                .getContent();
+        return announcementResponses;
     }
 
     public AnnouncementResponse get(Long announcementId) {

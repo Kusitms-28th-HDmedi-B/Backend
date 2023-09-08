@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/announcement")
@@ -16,7 +18,7 @@ public class AnnouncementController {
     private final AnnouncementService announcementService;
 
     @GetMapping("")
-    public Page<AnnouncementResponse> getAll(@PageableDefault(size = 5) Pageable pageable) {
+    public List<AnnouncementResponse> getAll(@PageableDefault(size = 5) Pageable pageable) {
         return announcementService.getAll(pageable);
     }
 
