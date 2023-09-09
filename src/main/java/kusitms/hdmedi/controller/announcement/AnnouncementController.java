@@ -1,10 +1,9 @@
-package kusitms.hdmedi.controller;
+package kusitms.hdmedi.controller.announcement;
 
-import kusitms.hdmedi.dto.request.AnnouncementRequest;
-import kusitms.hdmedi.dto.response.AnnouncementResponse;
-import kusitms.hdmedi.service.AnnouncementService;
+import kusitms.hdmedi.dto.request.announcement.AnnouncementRequest;
+import kusitms.hdmedi.dto.response.announcement.AnnouncementResponse;
+import kusitms.hdmedi.service.announcement.AnnouncementService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;

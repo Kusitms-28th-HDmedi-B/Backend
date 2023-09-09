@@ -1,6 +1,6 @@
-package kusitms.hdmedi.dto.response;
+package kusitms.hdmedi.dto.response.announcement;
 
-import kusitms.hdmedi.domain.Announcement;
+import kusitms.hdmedi.domain.announcement.Announcement;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

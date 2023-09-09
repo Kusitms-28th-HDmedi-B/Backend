@@ -1,6 +1,6 @@
-package kusitms.hdmedi.repository;
+package kusitms.hdmedi.repository.announcement;
 
-import kusitms.hdmedi.domain.Announcement;
+import kusitms.hdmedi.domain.announcement.Announcement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

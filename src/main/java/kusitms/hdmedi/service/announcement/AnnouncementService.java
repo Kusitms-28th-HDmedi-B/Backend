@@ -1,11 +1,10 @@
-package kusitms.hdmedi.service;
+package kusitms.hdmedi.service.announcement;
 
-import kusitms.hdmedi.domain.Announcement;
-import kusitms.hdmedi.dto.request.AnnouncementRequest;
-import kusitms.hdmedi.dto.response.AnnouncementResponse;
-import kusitms.hdmedi.repository.AnnouncementRepository;
+import kusitms.hdmedi.domain.announcement.Announcement;
+import kusitms.hdmedi.dto.request.announcement.AnnouncementRequest;
+import kusitms.hdmedi.dto.response.announcement.AnnouncementResponse;
+import kusitms.hdmedi.repository.announcement.AnnouncementRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

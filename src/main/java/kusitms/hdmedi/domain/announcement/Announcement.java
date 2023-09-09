@@ -1,4 +1,4 @@
-package kusitms.hdmedi.domain;
+package kusitms.hdmedi.domain.announcement;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
