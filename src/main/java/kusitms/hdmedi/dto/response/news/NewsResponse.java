@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 public class NewsResponse {
+    private Long id;
+
     private String title;
 
     private String source;
@@ -19,6 +21,7 @@ public class NewsResponse {
     private LocalDateTime publishedAt;
 
     public NewsResponse(News news) {
+        this.id = news.getId();
         this.title = news.getTitle();
         this.source = news.getSource();
         this.link = news.getLink();
