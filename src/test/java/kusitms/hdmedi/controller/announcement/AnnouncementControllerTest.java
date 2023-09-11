@@ -120,7 +120,7 @@ class AnnouncementControllerTest {
         String requestBody = objectMapper.writeValueAsString(announcementRequest);
 
         //when
-        mockMvc.perform(MockMvcRequestBuilders.patch("/api/announcement/{id}", announcement.getId())
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/announcement/{id}", announcement.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody));
 
