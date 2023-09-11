@@ -56,7 +56,7 @@ class AnnouncementControllerTest {
                 .build());
 
         //when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/announcement")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/announcement")
                         .param("page", "0"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))
@@ -74,7 +74,7 @@ class AnnouncementControllerTest {
                 .build());
 
         //when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/announcement/{id}", announcement.getId()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/announcement/{id}", announcement.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value(announcement.getTitle()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content").value(announcement.getContent()))
@@ -93,7 +93,7 @@ class AnnouncementControllerTest {
         String requestBody = objectMapper.writeValueAsString(announcementRequest);
 
         //when
-        mockMvc.perform(MockMvcRequestBuilders.post("/announcement")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/announcement")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody));
 
@@ -120,7 +120,7 @@ class AnnouncementControllerTest {
         String requestBody = objectMapper.writeValueAsString(announcementRequest);
 
         //when
-        mockMvc.perform(MockMvcRequestBuilders.patch("/announcement/{id}", announcement.getId())
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/announcement/{id}", announcement.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody));
 
@@ -141,7 +141,7 @@ class AnnouncementControllerTest {
                 .build());
 
         //when
-        mockMvc.perform(MockMvcRequestBuilders.delete("/announcement/{id}", announcement.getId()));
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/announcement/{id}", announcement.getId()));
 
         //then
         assertThat(announcementRepository.count()).isEqualTo(0);
