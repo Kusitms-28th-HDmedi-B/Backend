@@ -10,6 +10,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,7 +50,9 @@ class NewsServiceTest {
                 .publishedAt(LocalDateTime.parse("2023-07-11T23:23:23"))
                 .build());
 
-        List<NewsResponse> newsResponses = newsService.getAll();
+        Pageable pageable = PageRequest.of(0, 7, Sort.by("publishedAt").descending());
+
+        List<NewsResponse> newsResponses = newsService.getAll(pageable);
 
         assertThat(newsResponses.size()).isEqualTo(2);
         assertThat(newsResponses.get(0).getTitle()).isEqualTo(news2.getTitle());

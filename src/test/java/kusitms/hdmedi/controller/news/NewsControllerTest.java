@@ -60,7 +60,8 @@ class NewsControllerTest {
                 .publishedAt(LocalDateTime.parse("2023-07-11T23:23:23"))
                 .build());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/news"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/news")
+                        .param("page", "0"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].title").value(news2.getTitle()))
@@ -95,7 +96,7 @@ class NewsControllerTest {
 
         String requestBody = objectMapper.writeValueAsString(newsRequest);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/news")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/news")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody));
 
@@ -122,7 +123,7 @@ class NewsControllerTest {
 
         String requestBody = objectMapper.writeValueAsString(newsRequest);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/news/{id}", news.getId())
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/news/{id}", news.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody));
 

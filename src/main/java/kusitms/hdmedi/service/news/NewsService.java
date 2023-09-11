@@ -5,6 +5,7 @@ import kusitms.hdmedi.dto.request.news.NewsRequest;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.repository.news.NewsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +17,10 @@ import java.util.stream.Collectors;
 public class NewsService {
     private final NewsRepository newsRepository;
 
-    public List<NewsResponse> getAll() {
-        List<NewsResponse> newsResponses = newsRepository.findAllByOrderByPublishedAtDesc().stream()
+    public List<NewsResponse> getAll(Pageable pageable) {
+        List<NewsResponse> newsResponses = newsRepository.findAll(pageable)
                 .map(NewsResponse::new)
-                .collect(Collectors.toList());
+                .getContent();
         return newsResponses;
     }
 
