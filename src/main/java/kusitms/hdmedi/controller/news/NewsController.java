@@ -30,7 +30,7 @@ import java.util.List;
 public class NewsController {
     private final NewsService newsService;
 
-    @Operation(description = "뉴스 목록 조회하기")
+    @Operation(description = "모든 뉴스 조회하기", summary = "모든 뉴스 조회")
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = NewsResponse.class)))
     @GetMapping("")
     @Parameter(name = "page", description = "페이지 번호", example = "0", in = ParameterIn.QUERY)
@@ -38,7 +38,7 @@ public class NewsController {
         return newsService.getAll(pageable);
     }
 
-    @Operation(description = "특정 뉴스 조회하기")
+    @Operation(description = "특정 뉴스 조회하기", summary = "특정 뉴스 조회")
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = NewsResponse.class)))
     @Parameter(name = "newsId", description = "뉴스 ID", example = "7")
     @GetMapping("/{newsId}")
@@ -46,20 +46,20 @@ public class NewsController {
         return newsService.get(newsId);
     }
 
-    @Operation(description = "뉴스 작성하기")
+    @Operation(description = "뉴스 작성하기", summary = "뉴스 작성")
     @PostMapping("")
     public void create(@RequestBody NewsRequest newsRequest) {
         newsService.create(newsRequest);
     }
 
-    @Operation(description = "뉴스 수정하기")
+    @Operation(description = "뉴스 수정하기", summary = "뉴스 수정")
     @Parameter(name = "newsId", description = "뉴스 ID", example = "7")
     @PutMapping("/{newsId}")
     public void update(@PathVariable Long newsId, @RequestBody NewsRequest newsRequest) {
         newsService.update(newsId, newsRequest);
     }
 
-    @Operation(description = "뉴스 삭제하기")
+    @Operation(description = "뉴스 삭제하기", summary = "뉴스 삭제")
     @Parameter(name = "newsId", description = "뉴스 ID", example = "7")
     @DeleteMapping("/{newsId}")
     public void delete(@PathVariable Long newsId) {
