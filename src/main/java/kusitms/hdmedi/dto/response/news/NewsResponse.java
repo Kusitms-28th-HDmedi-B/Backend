@@ -1,9 +1,8 @@
 package kusitms.hdmedi.dto.response.news;
 
-import kusitms.hdmedi.domain.domain.News;
+import kusitms.hdmedi.domain.news.News;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
