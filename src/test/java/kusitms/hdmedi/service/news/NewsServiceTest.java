@@ -2,6 +2,7 @@ package kusitms.hdmedi.service.news;
 
 import kusitms.hdmedi.domain.news.News;
 import kusitms.hdmedi.dto.request.news.NewsRequest;
+import kusitms.hdmedi.dto.response.news.NewsListResponse;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.repository.news.NewsRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +29,8 @@ class NewsServiceTest {
 
     @BeforeEach
     void setUp() {
-        newsRepository.deleteAll();
+        //테스트시 db 데이터가 초기화되서 임시 주석처리
+        //newsRepository.deleteAll();
     }
 
     @Test
@@ -50,10 +52,11 @@ class NewsServiceTest {
 
         Pageable pageable = PageRequest.of(0, 7, Sort.by("publishedAt").descending());
 
-        List<NewsResponse> newsResponses = newsService.getAll(pageable);
+        NewsListResponse newsListResponse = newsService.getAll(pageable);
 
-        assertThat(newsResponses.size()).isEqualTo(2);
-        assertThat(newsResponses.get(0).getTitle()).isEqualTo(news2.getTitle());
+        assertThat(newsListResponse.getMaxpage()).isEqualTo(0);
+        assertThat(newsListResponse.getData().size()).isEqualTo(2);
+        assertThat(newsListResponse.getData().get(0).getTitle()).isEqualTo(news2.getTitle());
     }
 
     @Test

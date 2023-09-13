@@ -2,6 +2,7 @@ package kusitms.hdmedi.service.announcement;
 
 import kusitms.hdmedi.domain.announcement.Announcement;
 import kusitms.hdmedi.dto.request.announcement.AnnouncementRequest;
+import kusitms.hdmedi.dto.response.announcement.AnnouncementListResponse;
 import kusitms.hdmedi.dto.response.announcement.AnnouncementResponse;
 import kusitms.hdmedi.repository.announcement.AnnouncementRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,18 @@ import java.util.List;
 public class AnnouncementService {
     private final AnnouncementRepository announcementRepository;
 
-    public List<AnnouncementResponse> getAll(Pageable pageable) {
+    public AnnouncementListResponse getAll(Pageable pageable) {
         List<AnnouncementResponse> announcementResponses = announcementRepository.findAll(pageable)
                 .map(AnnouncementResponse::new)
                 .getContent();
-        return announcementResponses;
+        long maxpage = 0, cnt = announcementRepository.count();
+        if (cnt > 0)
+            maxpage = (cnt - 1) / pageable.getPageSize();
+        AnnouncementListResponse announcemeneListResponse = AnnouncementListResponse.builder()
+                .maxpage(maxpage)
+                .data(announcementResponses)
+                .build();
+        return announcemeneListResponse;
     }
 
     public AnnouncementResponse get(Long announcementId) {

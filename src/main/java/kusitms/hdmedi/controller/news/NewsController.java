@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kusitms.hdmedi.dto.request.news.NewsRequest;
+import kusitms.hdmedi.dto.response.news.NewsListResponse;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.service.news.NewsService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class NewsController {
             content = @Content(array = @ArraySchema(schema = @Schema(implementation = NewsResponse.class))))
     @GetMapping("")
     @Parameter(name = "page", description = "페이지 번호", in = ParameterIn.QUERY)
-    public List<NewsResponse> getAll(@Parameter(hidden = true) @PageableDefault(size = 7, sort = "publishedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public NewsListResponse getAll(@Parameter(hidden = true) @PageableDefault(size = 7, sort = "publishedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return newsService.getAll(pageable);
     }
 

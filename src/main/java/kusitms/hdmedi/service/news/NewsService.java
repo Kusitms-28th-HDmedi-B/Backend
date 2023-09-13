@@ -2,6 +2,7 @@ package kusitms.hdmedi.service.news;
 
 import kusitms.hdmedi.domain.news.News;
 import kusitms.hdmedi.dto.request.news.NewsRequest;
+import kusitms.hdmedi.dto.response.news.NewsListResponse;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.repository.news.NewsRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,18 @@ import java.util.List;
 public class NewsService {
     private final NewsRepository newsRepository;
 
-    public List<NewsResponse> getAll(Pageable pageable) {
+    public NewsListResponse getAll(Pageable pageable) {
         List<NewsResponse> newsResponses = newsRepository.findAll(pageable)
                 .map(NewsResponse::new)
                 .getContent();
-        return newsResponses;
+        long maxpage = 0, cnt = newsRepository.count();
+        if (cnt > 0)
+            maxpage = (cnt - 1) / pageable.getPageSize();
+        NewsListResponse newsListResponse = NewsListResponse.builder()
+                .maxpage(maxpage)
+                .data(newsResponses)
+                .build();
+        return newsListResponse;
     }
 
     public NewsResponse get(Long newsId) {

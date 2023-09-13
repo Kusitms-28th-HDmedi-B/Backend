@@ -36,7 +36,8 @@ class AnnouncementControllerTest {
 
     @BeforeEach
     void setUp() {
-        announcementRepository.deleteAll();
+        //테스트시 db 데이터가 초기화되서 임시 주석처리
+        //announcementRepository.deleteAll();
     }
 
     @Test
@@ -59,8 +60,8 @@ class AnnouncementControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/announcement")
                         .param("page", "0"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value(announcement2.getTitle()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.maxpage").value(0))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].title").value(announcement2.getTitle()))
                 .andDo(MockMvcResultHandlers.print());
     }
 

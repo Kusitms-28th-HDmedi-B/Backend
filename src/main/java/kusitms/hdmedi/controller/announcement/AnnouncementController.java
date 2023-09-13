@@ -9,16 +9,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kusitms.hdmedi.dto.request.announcement.AnnouncementRequest;
+import kusitms.hdmedi.dto.response.announcement.AnnouncementListResponse;
 import kusitms.hdmedi.dto.response.announcement.AnnouncementResponse;
-import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.service.announcement.AnnouncementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Tag(name = "announcement", description = "공지사항 API")
 @RestController
@@ -32,7 +30,7 @@ public class AnnouncementController {
             content = @Content(array = @ArraySchema(schema = @Schema(implementation = AnnouncementResponse.class))))
     @GetMapping("")
     @Parameter(name = "page", description = "페이지 번호", in = ParameterIn.QUERY)
-    public List<AnnouncementResponse> getAll(@Parameter(hidden = true) @PageableDefault(size = 5, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public AnnouncementListResponse getAll(@Parameter(hidden = true) @PageableDefault(size = 5, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return announcementService.getAll(pageable);
     }
 

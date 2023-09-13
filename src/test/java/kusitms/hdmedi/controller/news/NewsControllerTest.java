@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDateTime;
 
@@ -36,7 +37,8 @@ class NewsControllerTest {
 
     @BeforeEach
     void setUp() {
-        newsRepository.deleteAll();
+        //테스트시 db 데이터가 초기화되서 임시 주석처리
+        //newsRepository.deleteAll();
     }
 
     @Test
@@ -56,11 +58,11 @@ class NewsControllerTest {
                 .publishedAt(LocalDateTime.parse("2023-07-11T23:23:23"))
                 .build());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/news")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/news")
                         .param("page", "0"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].title").value(news2.getTitle()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.maxpage").value(0))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].title").value(news2.getTitle()))
                 .andDo(MockMvcResultHandlers.print());
     }
 
@@ -74,7 +76,7 @@ class NewsControllerTest {
                 .publishedAt(LocalDateTime.parse("2023-07-11T22:22:22"))
                 .build());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/news/{id}", news.getId()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/news/{id}", news.getId()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("기사1"))
                 .andDo(MockMvcResultHandlers.print());
@@ -138,7 +140,7 @@ class NewsControllerTest {
                 .publishedAt(LocalDateTime.parse("2023-07-11T22:22:22"))
                 .build());
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/news/{id}", news.getId()));
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/news/{id}", news.getId()));
 
         assertThat(newsRepository.count()).isEqualTo(0);
     }
