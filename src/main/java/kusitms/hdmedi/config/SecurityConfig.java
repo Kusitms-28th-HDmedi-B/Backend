@@ -1,5 +1,7 @@
 package kusitms.hdmedi.config;
 
+import kusitms.hdmedi.domain.user.UserRole;
+import kusitms.hdmedi.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
