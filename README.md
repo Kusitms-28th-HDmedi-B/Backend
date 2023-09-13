@@ -20,7 +20,7 @@ ex) `git commit -m "#8 feat : 앱 설치 플로팅 배너 추가 `
 - `ci` : ci 설정 파일 수정
 - `perf` : 성능 개선
 - `rename` : 파일 혹은 폴더명 변경
-- 'add' : 파일 추가
+- `add` : 파일 추가
 
 <br>
 
