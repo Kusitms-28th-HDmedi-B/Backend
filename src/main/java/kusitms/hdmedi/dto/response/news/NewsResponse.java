@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @Getter
@@ -17,13 +18,13 @@ public class NewsResponse {
 
     private String link;
 
-    private LocalDateTime publishedAt;
+    private String publishedAt;
 
     public NewsResponse(News news) {
         this.id = news.getId();
         this.title = news.getTitle();
         this.source = news.getSource();
         this.link = news.getLink();
-        this.publishedAt = news.getPublishedAt();
+        this.publishedAt = news.getPublishedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
     }
 }

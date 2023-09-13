@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @Getter
@@ -15,15 +16,13 @@ public class AnnouncementResponse {
 
     private String content;
 
-    private LocalDateTime createdAt;
+    private String createdAt;
 
-    private LocalDateTime updatedAt;
 
     public AnnouncementResponse(Announcement announcement) {
         id = announcement.getId();
         title = announcement.getTitle();
         content = announcement.getContent();
-        createdAt = announcement.getCreatedAt();
-        updatedAt = announcement.getUpdatedAt();
+        createdAt = announcement.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
     }
 }
