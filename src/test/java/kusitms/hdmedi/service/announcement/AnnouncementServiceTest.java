@@ -3,9 +3,9 @@ package kusitms.hdmedi.service.announcement;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kusitms.hdmedi.domain.announcement.Announcement;
 import kusitms.hdmedi.dto.request.announcement.AnnouncementRequest;
+import kusitms.hdmedi.dto.response.announcement.AnnouncementListResponse;
 import kusitms.hdmedi.dto.response.announcement.AnnouncementResponse;
 import kusitms.hdmedi.repository.announcement.AnnouncementRepository;
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,16 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AnnouncementServiceTest {
@@ -38,7 +31,8 @@ class AnnouncementServiceTest {
 
     @BeforeEach
     void setUp() {
-        announcementRepository.deleteAll();
+        //테스트시 db 데이터가 초기화되서 임시 주석처리
+        //announcementRepository.deleteAll();
     }
 
     @Test
@@ -60,11 +54,12 @@ class AnnouncementServiceTest {
         Pageable pageable = PageRequest.of(0, 5, Sort.by("createdAt").descending());
 
         //when
-        List<AnnouncementResponse> announcementResponses = announcementService.getAll(pageable);
+        AnnouncementListResponse announcementListResponse = announcementService.getAll(pageable);
 
         //then
-        assertThat(announcementResponses.size()).isEqualTo(2);
-        assertThat(announcementResponses.get(0).getTitle()).isEqualTo(announcement2.getTitle());
+        assertThat(announcementListResponse.getMaxpage()).isEqualTo(0);
+        assertThat(announcementListResponse.getData().size()).isEqualTo(2);
+        assertThat(announcementListResponse.getData().get(0).getTitle()).isEqualTo(announcement2.getTitle());
     }
 
     @Test

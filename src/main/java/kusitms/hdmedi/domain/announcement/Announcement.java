@@ -32,11 +32,9 @@ public class Announcement {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Announcement(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Announcement(String title, String content) {
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public void update(String title, String content) {
