@@ -27,7 +27,7 @@ public class AnnouncementController {
 
     @Operation(description = "모든 공지사항 조회하기", summary = "모든 공지사항 조회")
     @ApiResponse(responseCode = "200", description = "OK",
-            content = @Content(array = @ArraySchema(schema = @Schema(implementation = AnnouncementResponse.class))))
+            content = @Content(schema = @Schema(implementation = AnnouncementListResponse.class)))
     @GetMapping("")
     @Parameter(name = "page", description = "페이지 번호", in = ParameterIn.QUERY)
     public AnnouncementListResponse getAll(@Parameter(hidden = true) @PageableDefault(size = 5, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {

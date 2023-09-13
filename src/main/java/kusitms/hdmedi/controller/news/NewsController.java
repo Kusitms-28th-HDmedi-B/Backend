@@ -29,7 +29,7 @@ public class NewsController {
 
     @Operation(description = "모든 뉴스 조회하기", summary = "모든 뉴스 조회")
     @ApiResponse(responseCode = "200", description = "OK",
-            content = @Content(array = @ArraySchema(schema = @Schema(implementation = NewsResponse.class))))
+            content = @Content(schema = @Schema(implementation = NewsListResponse.class)))
     @GetMapping("")
     @Parameter(name = "page", description = "페이지 번호", in = ParameterIn.QUERY)
     public NewsListResponse getAll(@Parameter(hidden = true) @PageableDefault(size = 7, sort = "publishedAt", direction = Sort.Direction.DESC) Pageable pageable) {
