@@ -5,6 +5,7 @@ import kusitms.hdmedi.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -50,6 +51,7 @@ public class SecurityConfig {
                                 .requestMatchers(mvcMatcherBuilder.pattern("/swagger-resources/**")).permitAll()
                                 .requestMatchers(mvcMatcherBuilder.pattern("/v3/api-docs/**")).permitAll()
                                 .requestMatchers(mvcMatcherBuilder.pattern("/auth/admin/**")).hasAuthority(UserRole.ADMIN.name())
+                                .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/**")).permitAll()
                                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtTokenFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class);;
 
