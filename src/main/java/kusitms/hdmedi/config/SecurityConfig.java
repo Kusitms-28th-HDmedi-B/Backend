@@ -69,11 +69,9 @@ public class SecurityConfig {
     // https://hdmedi.site/swagger-ui/index.html#/
     private CorsConfiguration getDefaultCorsConfiguration() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(
-                Arrays.asList("http://localhost:8080", "https://hdmedi.site", "http://localhost:3000"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));// 모든 ip 응답을 허용
         configuration.setAllowedHeaders(Arrays.asList("*")); // 모든 header 에 응답을 허용
         configuration.setAllowedMethods(Arrays.asList("*")); // 모든 get,post,patch,put,delete 요청 허용
-        configuration.setAllowedOrigins(Arrays.asList("*")); // 모든 ip 응답을 허용
         configuration.setAllowCredentials(true); // 내 서버가 응답할 때 json 을 자바스크립트에서 처리할 수 있게 할지를 설정하는 것
         configuration.setMaxAge(3600L);
 
