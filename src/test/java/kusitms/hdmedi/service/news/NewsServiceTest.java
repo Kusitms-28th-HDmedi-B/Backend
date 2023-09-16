@@ -1,10 +1,18 @@
 package kusitms.hdmedi.service.news;
 
+<<<<<<< HEAD
 import kusitms.hdmedi.domain.news.News;
 import kusitms.hdmedi.dto.request.news.NewsRequest;
 import kusitms.hdmedi.dto.response.news.NewsListResponse;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.repository.news.NewsRepository;
+=======
+import kusitms.hdmedi.domain.domain.News;
+import kusitms.hdmedi.dto.request.news.NewsRequest;
+import kusitms.hdmedi.dto.response.news.NewsResponse;
+import kusitms.hdmedi.repository.news.NewsRepository;
+import org.assertj.core.api.AssertionsForClassTypes;
+>>>>>>> bfc8a2c214eba153895fecca239e41f0575e628d
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +26,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+<<<<<<< HEAD
+=======
+import static org.junit.jupiter.api.Assertions.*;
+>>>>>>> bfc8a2c214eba153895fecca239e41f0575e628d
 
 @SpringBootTest
 class NewsServiceTest {

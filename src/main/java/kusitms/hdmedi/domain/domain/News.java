@@ -1,4 +1,4 @@
-package kusitms.hdmedi.domain.news;
+package kusitms.hdmedi.domain.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +7,10 @@ import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,22 +29,18 @@ public class News {
 
     private LocalDateTime publishedAt;
 
-    private String image;
-
     @Builder
-    public News(String title, String source, String link, LocalDateTime publishedAt, String image) {
+    public News(String title, String source, String link, LocalDateTime publishedAt) {
         this.title = title;
         this.source = source;
         this.link = link;
         this.publishedAt = publishedAt;
-        this.image = image;
     }
 
-    public void update(String title, String source, String link, LocalDateTime publishedAt, String image) {
+    public void update(String title, String source, String link, LocalDateTime publishedAt) {
         this.title = title;
         this.source = source;
         this.link = link;
         this.publishedAt = publishedAt;
-        this.image = image;
     }
 }

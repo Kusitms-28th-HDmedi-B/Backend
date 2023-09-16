@@ -13,6 +13,12 @@ spring:
       hibernate:
         format_sql: true
 
+aws:
+  access-key: AKIA2ROZTIYT3YVINMDM
+  secret-key: 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
+  region: ap-northeast-2
+  bucket: hdmedi-b
+
 springdoc:
   api-docs:
     enabled: true

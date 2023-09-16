@@ -1,9 +1,16 @@
 package kusitms.hdmedi.controller.news;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+<<<<<<< HEAD
 import kusitms.hdmedi.domain.news.News;
 import kusitms.hdmedi.dto.request.news.NewsRequest;
 import kusitms.hdmedi.repository.news.NewsRepository;
+=======
+import kusitms.hdmedi.domain.domain.News;
+import kusitms.hdmedi.dto.request.news.NewsRequest;
+import kusitms.hdmedi.repository.news.NewsRepository;
+import org.assertj.core.api.AssertionsForClassTypes;
+>>>>>>> bfc8a2c214eba153895fecca239e41f0575e628d
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,11 +22,19 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+<<<<<<< HEAD
+=======
+import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
+>>>>>>> bfc8a2c214eba153895fecca239e41f0575e628d
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.Matchers.hasSize;
+<<<<<<< HEAD
+=======
+import static org.junit.jupiter.api.Assertions.*;
+>>>>>>> bfc8a2c214eba153895fecca239e41f0575e628d
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
