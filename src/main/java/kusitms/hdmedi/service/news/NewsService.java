@@ -5,11 +5,14 @@ import kusitms.hdmedi.dto.request.news.NewsRequest;
 import kusitms.hdmedi.dto.response.news.NewsListResponse;
 import kusitms.hdmedi.dto.response.news.NewsResponse;
 import kusitms.hdmedi.repository.news.NewsRepository;
+import kusitms.hdmedi.service.s3.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -37,21 +40,22 @@ public class NewsService {
         return new NewsResponse(news);
     }
 
-    public void create(NewsRequest newsRequest) {
+    public void create(NewsRequest newsRequest){
         News news = News.builder()
                 .title(newsRequest.getTitle())
                 .source(newsRequest.getSource())
                 .link(newsRequest.getLink())
                 .publishedAt(newsRequest.getPublishedAt())
+                .image(newsRequest.getImage())
                 .build();
         newsRepository.save(news);
     }
 
     @Transactional
-    public void update(Long newsId, NewsRequest newsRequest) {
+    public void update(Long newsId, NewsRequest newsRequest){
         News news = newsRepository.findById(newsId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 뉴스입니다"));
-        news.update(newsRequest.getTitle(), newsRequest.getSource(), news.getLink(), news.getPublishedAt());
+        news.update(newsRequest.getTitle(), newsRequest.getSource(), newsRequest.getLink(), newsRequest.getPublishedAt(), newsRequest.getImage());
     }
 
     public void delete(Long newsId) {

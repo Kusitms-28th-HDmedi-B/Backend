@@ -20,11 +20,14 @@ public class NewsResponse {
 
     private String publishedAt;
 
+    private String image;
+
     public NewsResponse(News news) {
         this.id = news.getId();
         this.title = news.getTitle();
         this.source = news.getSource();
         this.link = news.getLink();
         this.publishedAt = news.getPublishedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
+        this.image = news.getImage();
     }
 }

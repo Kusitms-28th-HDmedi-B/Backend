@@ -26,18 +26,22 @@ public class News {
 
     private LocalDateTime publishedAt;
 
+    private String image;
+
     @Builder
-    public News(String title, String source, String link, LocalDateTime publishedAt) {
+    public News(String title, String source, String link, LocalDateTime publishedAt, String image) {
         this.title = title;
         this.source = source;
         this.link = link;
         this.publishedAt = publishedAt;
+        this.image = image;
     }
 
-    public void update(String title, String source, String link, LocalDateTime publishedAt) {
+    public void update(String title, String source, String link, LocalDateTime publishedAt, String image) {
         this.title = title;
         this.source = source;
         this.link = link;
         this.publishedAt = publishedAt;
+        this.image = image;
     }
 }

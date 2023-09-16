@@ -19,11 +19,14 @@ public class NewsRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime publishedAt;
 
+    private String image;
+
     @Builder
-    public NewsRequest(String title, String source, String link, LocalDateTime publishedAt) {
+    public NewsRequest(String title, String source, String link, LocalDateTime publishedAt, String image) {
         this.title = title;
         this.source = source;
         this.link = link;
         this.publishedAt = publishedAt;
+        this.image = image;
     }
 }
