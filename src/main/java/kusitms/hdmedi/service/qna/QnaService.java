@@ -10,6 +10,7 @@ import kusitms.hdmedi.repository.qna.QnaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,4 +62,18 @@ public class QnaService {
         QnaResponse qnaResponse = new QnaResponse(qna);
         return qnaResponse;
     }
+
+    @Transactional
+    public void update(Long qnaId, QnaRequest qnaRequest) {
+        Qna qna = qnaRepository.findById(qnaId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 질문/답변입니다"));
+        qna.update(qnaRequest.getQuestion(), qnaRequest.getAnswer());
+    }
+
+    public void delete(Long qnaId) {
+        Qna qna = qnaRepository.findById(qnaId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 질문/답변입니다"));
+        qnaRepository.delete(qna);
+    }
+
 }

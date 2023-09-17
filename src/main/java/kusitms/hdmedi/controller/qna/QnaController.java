@@ -63,5 +63,19 @@ public class QnaController {
         qnaService.create(qnaRequest);
     }
 
+    @Operation(description = "자주하는 질문/답변 수정하기", summary = "자주하는 질문/답변 수정")
+    @Parameter(name = "qnaId", description = "자주하는 질문/답변 ID")
+    @PutMapping("/{qnaId}")
+    public void delete(@PathVariable Long qnaId, @RequestBody QnaRequest qnaRequest) {
+        qnaService.update(qnaId, qnaRequest);
+    }
+
+    @Operation(description = "자주하는 질문/답변 삭제하기", summary = "자주하는 질문/답변 삭제")
+    @Parameter(name = "qnaId", description = "자주하는 질문/답변 ID")
+    @DeleteMapping("/{qnaId}")
+    public void delete(@PathVariable Long qnaId) {
+        qnaService.delete(qnaId);
+    }
+
 
 }
