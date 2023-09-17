@@ -17,7 +17,7 @@
 
 ## 🔍 System Architecture
 
-<img width="7342" alt="HDmedi Architecture" src="https://github.com/Kusitms-28th-HDmedi-B/Backend/assets/98451999/a5690e64-0bdc-4808-80c3-0c411b990482">
+<img width="7342" alt="HDmedi Architecture" src="https://github.com/Kusitms-28th-HDmedi-B/Backend/assets/98451999/72c0db4b-e296-49df-ad07-a4005fad97b6">
 
 <br>
 <br>
