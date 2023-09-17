@@ -22,6 +22,6 @@ public class QnaResponse {
         id = qna.getId();
         question = qna.getQuestion();
         answer = qna.getAnswer();
-        createdAt = qna.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy.mm.dd"));
+        createdAt = qna.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
     }
 }
