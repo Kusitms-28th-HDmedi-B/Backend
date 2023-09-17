@@ -46,6 +46,7 @@ public class QnaService {
         return qnaResponses;
     }
 
+    @Transactional
     public void create(QnaRequest qnaRequest) {
         Qna qna = Qna.builder()
                 .question(qnaRequest.getQuestion())
