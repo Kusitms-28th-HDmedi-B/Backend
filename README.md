@@ -25,11 +25,12 @@
 ## :computer: Technology
 
 - Web
-    - ![javascript](https://img.shields.io/badge/javascript-007ACC?style=flat-square&logo=javascript&logoColor=white)
-      ![typescript](https://img.shields.io/badge/typescript-F54A2A?style=flat-square&logo=typescript&logoColor=white)
+    - ![typescript](https://img.shields.io/badge/typescript-F54A2A?style=flat-square&logo=typescript&logoColor=white)
     - ![react](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white)
+      ![reactquery](https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=reactquery&logoColor=white)
       ![axios](https://img.shields.io/badge/axios-DB5C3F?style=flat-square&logo=axios&logoColor=white)
       ![recoil](https://img.shields.io/badge/recoil-f26b00?style=flat-square&logo=recoil&logoColor=white)
+      ![styledcomponents](https://img.shields.io/badge/styledcomponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white)
     - ![vite](https://img.shields.io/badge/vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 - Server
     - ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
@@ -37,7 +38,6 @@
       ![Springboot](https://img.shields.io/badge/Springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
       ![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=flat-square&logo=gnu-bash&logoColor=white)
       ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=flat-square&logo=Gradle&logoColor=white)
-      ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=flat-square&logo=swagger&logoColor=white)
       ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=flat-square&logo=spring&logoColor=white)
       ![JWT](https://img.shields.io/badge/JWT-black?style=flat-square&logo=JSON%20web%20tokens)
     - ![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=flat-square&logo=mysql&logoColor=white)
@@ -49,7 +49,8 @@
       ![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)
       ![Nginx](https://img.shields.io/badge/Nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
 - Co-working Tool
-    - ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
+    - ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=flat-square&logo=swagger&logoColor=white)
+      ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
       ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 
 <br>
